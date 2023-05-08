@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block head %}
+	<title>Ultra Simple Chat</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+{% block content %}
+	<div class="container">
+		<div class="chat-box">
+			<div class="chat-message">
+				<span class="chat-message__username">John</span>
+				<span class="chat-message__text">Hello World!</span>
+			</div>
+			<div class="chat-message">
+				<span class="chat-message__username">Mary</span>
+				<span class="chat-message__text">Hi John!</span>
+			</div>
+		</div>
+		<form class="chat-form">
+			<input class="chat-input" type="text" placeholder="Type your message here">
+			<button class="chat-button" type="submit">Send</button>
+		</form>
+	</div>
+{% endblock %}
