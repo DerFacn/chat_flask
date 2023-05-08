@@ -47,3 +47,19 @@
 		input[type="submit"]:hover {
 			background-color: #3e8e41;
 		}
+
+		.notification {
+            text-align: center;
+            color: #721c24;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 0.25rem;
+        }
+
+        .error {
+            background-color: #f8d7da;
+        }
+
+        .successfully {
+            background-color: #4CAF50;
+        }

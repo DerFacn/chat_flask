@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Вхід</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+{% endblock %}
+{% block content %}
+    <div>
+		{% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="notification successfully">
+                {{ messages[0] }}
+                </div>
+            {% endif %}
+        {% endwith %}
+		<h2>Вхід</h2>
+		<form action="/login" method="post">
+			<label for="email">Email:</label>
+			<input type="email" id="email" name="email" placeholder="Введіть свій email" required>
+
+			<label for="password">Пароль:</label>
+			<input type="password" id="password" name="password" placeholder="Введіть пароль" required>
+
+			<input type="checkbox" id="remember" name="remember">
+			<label for="remember">Запам'ятати мене</label>
+
+			<input type="submit" value="Увійти">
+		</form>
+	</div>
+{% endblock %}
