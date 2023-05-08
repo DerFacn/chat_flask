@@ -6,19 +6,23 @@
 {% block content %}
 	<div class="container">
 		<div class="chat-box">
+			{% if chat %}
+			{% for message in chat %}
 			<div class="chat-message">
-				<span class="chat-message__username">John</span>
-				<span class="chat-message__text">Hello World!</span>
+				<span class="chat-message__username">{{ message.username }}</span>
+				<span class="chat-message__text">{{ message.message }}</span>
 			</div>
-			<div class="chat-message">
-				<span class="chat-message__username">Mary</span>
-				<span class="chat-message__text">Hi John!</span>
-			</div>
+			{% endfor %}
+			{% endif %}
 		</div>
-		<form class="chat-form">
-			<input class="chat-input" type="text" placeholder="Type your message here">
+		<form class="chat-form" action="/" method="post">
+			<input class="chat-input" type="text" name="chat-input" placeholder="Type your message here" required autofocus>
 			<button class="chat-button" type="submit">Send</button>
 		</form>
 		<br><p><a href="{{ url_for('auth.logout') }}" style="text-align: center;">Logout</a></p>
 	</div>
+	<script>
+		var chatBox = document.querySelector('.chat-box');
+		chatBox.scrollTop = chatBox.scrollHeight;
+	</script>
 {% endblock %}
