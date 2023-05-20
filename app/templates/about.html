@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+<body>
+{% include 'navbar.html' %}
+    <div class="container">
+        <h1>About</h1>
+        <h4>This service was created as an educational project,
+            it can be used for your non-collar purposes.
+            Respect everyone in the chat, and try to be
+            careful with what you say. If you insult chat
+            members, your messages will be deleted and your
+            account will be deleted along with them.</h4>
+        <h1>Contacts</h1>
+        <ul>
+            <li><p>GitHub: <a href="https://github.com/DerFacn/chat_flask" target="_blank">https://github.com/DerFacn/chat_flask</a></p></li>
+            <li><p>Telegram: <a href="https://t.me/derfacn" target="_blank">derfacn🦹‍♀</a></p></li>
+            <li><p>Viber/WhatsApp: <a href="https://wa.me/qr/LDCDAYTGFKOAJ1" target="_blank">+380979426758</a></p></li>
+        </ul>
+    </div>
+{% endblock %}

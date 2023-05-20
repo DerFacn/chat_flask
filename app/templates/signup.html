@@ -1,10 +1,9 @@
 {% extends 'base.html' %}
-{% block head %}
-	<title>Реєстрація</title>
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
-{% endblock %}
+
 {% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
 <div>
+    <h2>Sign Up</h2>
 		{% with messages = get_flashed_messages() %}
             {% if messages %}
                 <div class="notification successfully">
@@ -12,18 +11,39 @@
                 </div>
             {% endif %}
         {% endwith %}
-		<h2>Реєстрація</h2>
-		<form action="/signup" method="post">
-			<label for="email">Email:</label>
-			<input type="email" id="email" name="email" placeholder="Введіть свій email" required>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.username.label }}
+            {{ form.username }}
+            {% for error in form.username.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.email.label }}
+            {{ form.email }}
+            {% for error in form.email.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.password.label }}
+            {{ form.password }}
+            {% for error in form.password.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.password2.label }}
+            {{ form.password2 }}
+            {% for error in form.password2.errors %}
+            <span style="color: red;">{{ error }}</span>
+            {% endfor %}
+        </p>
+        Have an account? <a href="{{ url_for('login') }}">Login</a><br>
 
-			<label for="username">Ім'я користувача:</label>
-			<input type="text" id="username" name="username" placeholder="Введіть ім'я користувача" required>
-
-			<label for="password">Пароль:</label>
-			<input type="password" id="password" name="password" placeholder="Введіть пароль" required>
-			Вже є аккаунт?  <a href="{{ url_for('auth.login') }}">Логін тут</a><br>
-			<input type="submit" value="Зареєструватись">
-		</form>
+        {{ form.submit() }}
+    </form>
 	</div>
 {% endblock %}

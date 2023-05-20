@@ -1,25 +1,24 @@
 {% extends 'base.html' %}
-{% block head %}
-	<title>Чат</title>
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
-{% endblock %}
+
 {% block content %}
-	<div class="container">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% include 'navbar.html' %}
+<div class="container">
 		<div class="chat-box">
 			{% if chat %}
 			{% for message in chat %}
 			<div class="chat-message">
-				<span class="chat-message__username">{{ message.username }}</span>
+				<span class="chat-message__username">{{ message.author.username }}</span>
 				<span class="chat-message__text">{{ message.message }}</span>
 			</div>
 			{% endfor %}
 			{% endif %}
 		</div>
-		<form class="chat-form" action="/" method="post">
-			<input class="chat-input" type="text" name="chat-input" placeholder="Type your message here" required autofocus>
-			<button class="chat-button" type="submit">Send</button>
+		<form class="chat-form" action="" method="post">
+			{{ form.hidden_tag() }}
+			{{ form.chat(class_="chat-input", placeholder_="Type message here", autofocus_=True) }}
+			{{ form.submit(class_="chat-button") }}
 		</form>
-		<br><p><a href="{{ url_for('auth.logout') }}" style="text-align: center;">Logout</a></p>
 	</div>
 	<script>
 		var chatBox = document.querySelector('.chat-box');

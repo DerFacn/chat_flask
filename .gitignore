@@ -1,4 +1,5 @@
-.idea/
 venv/
-**__pycache__/
-instance/
+migrations/
+app.db
+.idea/
+__pycache__/
